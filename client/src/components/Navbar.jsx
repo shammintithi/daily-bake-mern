@@ -1,52 +1,88 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-white/20 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-amber-600">
-          🍞 Daily Bake
-        </h1>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 font-medium">
-          <li className="hover:text-amber-600 cursor-pointer">Home</li>
-          <li className="hover:text-amber-600 cursor-pointer">Menu</li>
-          <li className="hover:text-amber-600 cursor-pointer">About</li>
-          <li className="hover:text-amber-600 cursor-pointer">Contact</li>
-        </ul>
-
-        {/* Actions */}
-        <div className="hidden md:flex gap-4">
-          <button className="px-4 py-2 rounded-xl bg-amber-500 text-white hover:bg-amber-600">
-            Login
-          </button>
-          <button className="px-4 py-2 rounded-xl border border-amber-500 text-amber-600 hover:bg-amber-50">
-            Cart
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <button
-          className="md:hidden text-2xl"
-          onClick={() => setOpen(!open)}
+        <Link
+          to="/"
+          className="group flex items-center gap-2"
         >
-          ☰
-        </button>
-      </div>
+          <span className="text-3xl group-hover:rotate-12 transition duration-500">
+            🍞
+          </span>
 
-      {open && (
-        <div className="md:hidden px-6 pb-4 space-y-2">
-          <p>Home</p>
-          <p>Menu</p>
-          <p>About</p>
-          <p>Contact</p>
+          <h1 className="text-3xl font-extrabold bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
+            Daily Bake
+          </h1>
+        </Link>
+
+        {/* Navigation */}
+        <div className="hidden md:flex items-center gap-8 font-semibold text-gray-700">
+
+          <Link
+            to="/"
+            className="relative group"
+          >
+            Home
+            <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+
+          <Link
+            to="/products"
+            className="relative group"
+          >
+            Menu
+            <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+
+          <Link
+            to="/about"
+            className="relative group"
+          >
+            About
+            <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+
+          <Link
+            to="/contact"
+            className="relative group"
+          >
+            Contact
+            <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+
         </div>
-      )}
+
+        {/* Right Section */}
+        <div className="flex items-center gap-3">
+
+          <Link
+            to="/cart"
+            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 hover:bg-amber-50 hover:text-amber-600 transition"
+          >
+            🛒 Cart
+          </Link>
+
+          <Link
+            to="/login"
+            className="hidden md:block px-4 py-2 font-medium hover:text-amber-600 transition"
+          >
+            Login
+          </Link>
+
+          <Link
+            to="/register"
+            className="relative overflow-hidden px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 shadow-lg hover:scale-105 transition duration-300"
+          >
+            Sign Up
+          </Link>
+
+        </div>
+
+      </div>
     </nav>
   );
 }
