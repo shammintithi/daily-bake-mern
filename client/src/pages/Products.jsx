@@ -1,37 +1,86 @@
-import { useEffect, useState, useContext } from "react";
-import api from "../api/axios";
-import { CartContext } from "../context/CartContext";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
+import products from "../data/products";
 
 export default function Products() {
-  const [products, setProducts] = useState([]);
-  const { addToCart } = useContext(CartContext);
+  const [searchParams] = useSearchParams();
 
-  useEffect(() => {
-    api.get("/products")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const [search, setSearch] = useState("");
+
+  const category = searchParams.get("category");
+
+  const filteredProducts = products
+    .filter((product) => {
+      const categoryMatch = category
+        ? product.category === category
+        : true;
+
+      const searchMatch = product.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      return categoryMatch && searchMatch;
+    });
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6">Our Bakery Items 🍪</h2>
+    <div className="max-w-7xl mx-auto px-6 py-16">
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {products.map((p) => (
-          <div key={p._id} className="bg-white shadow rounded-xl p-4">
-            <img src={p.image} className="h-40 w-full object-cover rounded" />
-            <h3 className="font-bold mt-2">{p.name}</h3>
-            <p className="text-amber-600">${p.price}</p>
+      {/* Header */}
+      <div className="text-center mb-12">
 
-            <button
-              onClick={() => addToCart(p)}
-              className="mt-3 w-full bg-amber-500 text-white py-2 rounded"
-            >
-              Add to Cart
-            </button>
-          </div>
-        ))}
+        <h1 className="text-5xl font-black">
+          Our Bakery Menu 🍪
+        </h1>
+
+        <p className="text-gray-500 mt-4">
+          Freshly baked every day.
+        </p>
+
+        <p className="text-sm text-amber-600 font-medium mt-3">
+          {filteredProducts.length} items available
+        </p>
+
       </div>
+
+      {/* Search + Sort */}
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
+
+        <input
+          type="text"
+          placeholder="🔍 Search bakery items..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="
+            w-full md:w-[420px]
+            px-5 py-3
+            rounded-2xl
+            border border-gray-200
+            shadow-sm
+            bg-white
+            focus:outline-none
+            focus:ring-2
+            focus:ring-amber-400
+          "
+        />
+
+      </div>
+
+      {/* Products */}
+      <div className="grid md:grid-cols-3 gap-8">
+
+        {filteredProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            price={product.price}
+            image={product.image}
+          />
+        ))}
+
+      </div>
+
     </div>
   );
 }

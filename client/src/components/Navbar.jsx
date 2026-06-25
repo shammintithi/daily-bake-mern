@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 export default function Navbar() {
+  const { cart } = useContext(CartContext);
+
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-white/20 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -64,6 +68,12 @@ export default function Navbar() {
             className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 hover:bg-amber-50 hover:text-amber-600 transition"
           >
             🛒 Cart
+
+            {cart.length > 0 && (
+              <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                {cart.length}
+              </span>
+            )}
           </Link>
 
           <Link

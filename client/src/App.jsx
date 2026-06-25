@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
+import ProductDetails from "./pages/ProductDetails";
+import NotFound from "./pages/NotFound";
 
 
 export default function App() {
@@ -24,6 +26,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />

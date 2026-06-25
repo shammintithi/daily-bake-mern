@@ -31,19 +31,25 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
 
             <ProductCard
+              id="1"
               name="Chocolate Cake"
+              category="cakes"
               price="12"
               image="https://images.unsplash.com/photo-1578985545062-69928b1d9587"
             />
 
             <ProductCard
+              id="2"
               name="Butter Croissant"
+              category="pastries"
               price="5"
               image="https://images.unsplash.com/photo-1555507036-ab1f4038808a"
             />
 
             <ProductCard
+              id="3"
               name="Blueberry Muffin"
+              category="bread"
               price="4"
               image="https://images.unsplash.com/photo-1608198093002-ad4e005484ec"
             />

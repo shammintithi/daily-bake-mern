@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function FeaturedCategories() {
   const categories = [
     {
@@ -35,30 +37,34 @@ export default function FeaturedCategories() {
         <div className="grid md:grid-cols-4 gap-8">
 
           {categories.map((item, index) => (
-            <div
+            <Link
               key={index}
-              className="
-                group
-                rounded-3xl
-                p-10
-                text-center
-                bg-gradient-to-br
-                from-amber-100
-                to-orange-100
-                hover:scale-105
-                transition
-                duration-300
-                cursor-pointer
-              "
+              to={`/products?category=${item.name.toLowerCase()}`}
             >
-              <div className="text-7xl mb-5 group-hover:rotate-12 transition">
-                {item.emoji}
-              </div>
+              <div
+                className="
+        group
+        rounded-3xl
+        p-10
+        text-center
+        bg-gradient-to-br
+        from-amber-100
+        to-orange-100
+        hover:scale-105
+        transition
+        duration-300
+        cursor-pointer
+      "
+              >
+                <div className="text-7xl mb-5 group-hover:rotate-12 transition">
+                  {item.emoji}
+                </div>
 
-              <h3 className="text-2xl font-bold">
-                {item.name}
-              </h3>
-            </div>
+                <h3 className="text-2xl font-bold">
+                  {item.name}
+                </h3>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
