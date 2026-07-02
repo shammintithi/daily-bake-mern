@@ -1,27 +1,67 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import products from "../data/products";
+import Loader from "../components/Loader";
 
 export default function Products() {
   const [searchParams] = useSearchParams();
 
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const category = searchParams.get("category");
 
-  const filteredProducts = products
-    .filter((product) => {
-      const categoryMatch = category
-        ? product.category === category
-        : true;
+  // ✅ FIX: reload loader on category change
+  useEffect(() => {
+    setLoading(true);
 
-      const searchMatch = product.name
-        .toLowerCase()
-        .includes(search.toLowerCase());
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
 
-      return categoryMatch && searchMatch;
-    });
+    return () => clearTimeout(timer);
+  }, [category]);
+
+  const filteredProducts = products.filter((product) => {
+    const categoryMatch = category
+      ? product.category === category
+      : true;
+
+    const searchMatch = product.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    return categoryMatch && searchMatch;
+  });
+
+  // ✅ Loader
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <Loader />
+      </div>
+    );
+  }
+
+  // ❗ Empty state improved
+  if (filteredProducts.length === 0) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+
+        <div className="text-6xl mb-4">🍪</div>
+
+        <h2 className="text-3xl font-bold">
+          No Products Found
+        </h2>
+
+        <p className="text-gray-500 mt-2">
+          Try searching with different keywords or category.
+        </p>
+
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
@@ -43,8 +83,8 @@ export default function Products() {
 
       </div>
 
-      {/* Search + Sort */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
+      {/* Search */}
+      <div className="flex justify-center mb-12">
 
         <input
           type="text"
@@ -57,7 +97,6 @@ export default function Products() {
             rounded-2xl
             border border-gray-200
             shadow-sm
-            bg-white
             focus:outline-none
             focus:ring-2
             focus:ring-amber-400
@@ -66,7 +105,7 @@ export default function Products() {
 
       </div>
 
-      {/* Products */}
+      {/* Products Grid */}
       <div className="grid md:grid-cols-3 gap-8">
 
         {filteredProducts.map((product) => (

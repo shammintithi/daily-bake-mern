@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/NotFound";
+import Checkout from "./pages/Checkout";
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
       <Footer />

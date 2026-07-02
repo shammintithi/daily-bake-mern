@@ -122,9 +122,11 @@ export default function Cart() {
           <span>${total.toFixed(2)}</span>
         </div>
 
-        <button className="w-full mt-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:opacity-90 transition">
-          Proceed To Checkout
-        </button>
+        <Link to="/checkout">
+          <button className="w-full mt-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:opacity-90 transition">
+            Proceed To Checkout
+          </button>
+        </Link>
 
       </div>
 
