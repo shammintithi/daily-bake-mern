@@ -3,12 +3,13 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
+// Load Environment Variables
 dotenv.config();
 
-// Connect Database
+// Connect to MongoDB
 connectDB();
-
 
 const app = express();
 
@@ -16,13 +17,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// API Route
 app.use("/api/products", productRoutes);
+app.use("/api/auth", authRoutes);
 
-// Test Route
+// Test Rout
 app.get("/", (req, res) => {
   res.send("🍞 Daily Bake Backend Running...");
 });
 
+// Start Serve
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
