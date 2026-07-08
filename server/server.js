@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 // Load Environment Variables
 dotenv.config();
@@ -20,8 +21,9 @@ app.use(express.json());
 // API Route
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/cart", cartRoutes);
 
-// Test Rout
+// Test Route
 app.get("/", (req, res) => {
   res.send("🍞 Daily Bake Backend Running...");
 });
