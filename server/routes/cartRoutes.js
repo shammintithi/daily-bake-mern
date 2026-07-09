@@ -4,6 +4,8 @@ import {
   addToCart,
   getCart,
   updateCartQuantity,
+  removeFromCart,
+  clearCart,
 } from "../controllers/cartController.js";
 
 
@@ -13,8 +15,8 @@ const router = express.Router();
 
 router.post("/", protect, addToCart);
 router.put("/:productId", protect, updateCartQuantity);
-
-
 router.get("/", protect, getCart);
+router.delete("/:productId", protect, removeFromCart);
+router.delete("/", protect, clearCart);
 
 export default router;
