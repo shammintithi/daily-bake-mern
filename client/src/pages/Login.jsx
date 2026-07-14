@@ -1,8 +1,48 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { loginUser } from "../services/authService";
+import { useAuth } from "../context/AuthContext";
+
 
 export default function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [showPassword, setShowPassword] = useState(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = await loginUser(formData);
+
+      // Save user info & token
+      login(data);
+
+      alert("Login Successful");
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+
+      alert(
+        error.response?.data?.message ||
+        "Login failed"
+      );
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 px-6">
@@ -19,7 +59,10 @@ export default function Login() {
           </p>
         </div>
 
-        <form className="space-y-5">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5"
+        >
 
           <div>
             <label className="block mb-2 font-medium">
@@ -28,8 +71,12 @@ export default function Login() {
 
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter your email"
               className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-amber-400"
+              required
             />
           </div>
 
@@ -39,23 +86,32 @@ export default function Login() {
             </label>
 
             <div className="relative">
+
               <input
                 type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
                 placeholder="Enter your password"
                 className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-amber-400"
+                required
               />
 
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() =>
+                  setShowPassword(!showPassword)
+                }
                 className="absolute right-4 top-3 text-gray-500"
               >
                 {showPassword ? "🙈" : "👁️"}
               </button>
+
             </div>
           </div>
 
           <div className="flex justify-between items-center text-sm">
+
             <label className="flex items-center gap-2">
               <input type="checkbox" />
               Remember Me
@@ -67,6 +123,7 @@ export default function Login() {
             >
               Forgot Password?
             </button>
+
           </div>
 
           <button

@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
+import Profile from "./pages/Profile";
 
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
 
       <Footer />
