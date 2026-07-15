@@ -1,81 +1,80 @@
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 bg-amber-50">
+    <section className="py-24 bg-bakery-creamLight">
       <div className="max-w-7xl mx-auto px-6">
-
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-
-          {/* Image */}
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Decorative image border */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-bakery-terracotta rounded-[2.5rem] rotate-3 scale-95 opacity-20"></div>
             <img
-              src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f"
-              alt="Bakery"
-              className="rounded-3xl shadow-xl h-[500px] w-full object-cover"
+              src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=1000"
+              alt="Artisan Baker Kneading Dough"
+              className="relative z-10 rounded-[2rem] shadow-2xl h-[450px] w-full object-cover border border-white/20"
             />
           </div>
 
-          {/* Content */}
+          {/* Core values content */}
           <div>
-
-            <span className="inline-block px-4 py-2 bg-white text-amber-600 rounded-full text-sm font-medium shadow">
+            <span className="inline-block px-4 py-1.5 bg-white text-bakery-terracotta rounded-full text-xs font-bold shadow-sm uppercase tracking-wider border border-bakery-cream/30">
               Why Daily Bake
             </span>
 
-            <h2 className="text-3xl md:text-4xl font-bold mt-5 text-gray-800">
-              Freshly Baked With
-              <span className="text-amber-500"> Love & Quality</span>
+            <h2 className="text-4xl md:text-5xl font-black font-serif text-bakery-burgundy mt-6">
+              Crafted With Traditional
+              <span className="block mt-1 font-serif text-bakery-terracotta italic font-normal">
+                Slow-Ferment & Love
+              </span>
             </h2>
 
-            <p className="mt-5 text-gray-600 leading-relaxed">
-              At Daily Bake, every loaf, pastry, and cake is crafted
-              using carefully selected ingredients and traditional
-              baking techniques to deliver unforgettable flavors.
+            <p className="mt-6 text-gray-600 leading-relaxed text-base font-sans">
+              We stand apart by honoring the traditional art of baking. Our bakers use centuries-old fermenting techniques, natural wild yeasts, and locally-sourced stoneground flours.
             </p>
 
-            <div className="mt-8 space-y-5">
-
+            <div className="mt-10 space-y-6">
               <div className="flex items-start gap-4">
-                <div className="text-3xl">🥖</div>
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-bakery-cream/30 flex-shrink-0">
+                  🥖
+                </div>
                 <div>
-                  <h3 className="font-semibold text-lg">
-                    Fresh Every Morning
+                  <h3 className="font-bold text-lg text-bakery-burgundy font-serif">
+                    Baked Fresh Every Dawn
                   </h3>
-                  <p className="text-gray-500">
-                    Baked fresh daily for the best taste and quality.
+                  <p className="text-gray-500 text-sm mt-1">
+                    Our ovens are heated at 3:00 AM daily, ensuring that when your order arrives, it retains that crisp, bakery-fresh crust.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="text-3xl">🌿</div>
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-bakery-cream/30 flex-shrink-0">
+                  🌿
+                </div>
                 <div>
-                  <h3 className="font-semibold text-lg">
-                    Premium Ingredients
+                  <h3 className="font-bold text-lg text-bakery-burgundy font-serif">
+                    100% Organic & Raw Ingredients
                   </h3>
-                  <p className="text-gray-500">
-                    Only high-quality ingredients go into our products.
+                  <p className="text-gray-500 text-sm mt-1">
+                    We partner directly with organic farms for raw milk, rich grass-fed butter, farm eggs, and stone-milled whole grains.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="text-3xl">🚚</div>
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-bakery-cream/30 flex-shrink-0">
+                  🚚
+                </div>
                 <div>
-                  <h3 className="font-semibold text-lg">
-                    Fast Delivery
+                  <h3 className="font-bold text-lg text-bakery-burgundy font-serif">
+                    Eco-Friendly Thermal Delivery
                   </h3>
-                  <p className="text-gray-500">
-                    Fresh bakery products delivered quickly to you.
+                  <p className="text-gray-500 text-sm mt-1">
+                    Delivered in sealed, reusable thermal bags so that pastries arrive flakey and warm at your doorstep.
                   </p>
                 </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

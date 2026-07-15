@@ -13,6 +13,8 @@ import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";
+import MyOrders from "./pages/MyOrders";
+import AdminDashboard from "./pages/AdminDashboard";
 
 
 export default function App() {
@@ -29,12 +31,14 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
     </BrowserRouter>
   );
-}
+}

@@ -1,85 +1,72 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-24 bg-gradient-to-br from-bakery-creamLight via-white to-bakery-cream/20">
+      {/* Decorative Orbs */}
+      <div className="absolute top-20 left-10 w-80 h-80 bg-bakery-cream rounded-full blur-3xl opacity-40 animate-pulse"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-bakery-terracotta/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
 
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50"></div>
-
-      {/* Glow Effects */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-amber-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-
-      <div className="absolute bottom-20 right-10 w-72 h-72 bg-orange-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
-
-        {/* Text */}
-        <div className="flex-1">
-          <span className="inline-block px-4 py-2 rounded-full bg-amber-100 text-amber-700 font-medium mb-5">
-            Freshly Baked Daily ✨
+      <div className="relative max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-16">
+        {/* Hero Info Text */}
+        <div className="flex-1 text-center lg:text-left">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-bakery-cream text-bakery-terracotta text-sm font-bold tracking-wider uppercase mb-6 shadow-sm border border-white/40">
+            ✨ Handcrafted Daily With Love
           </span>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-            Freshly Baked
-            <span className="block bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
-              Happiness
+          <h1 className="text-5xl md:text-7xl font-black font-serif text-bakery-burgundy leading-tight">
+            Artisan Baking,
+            <span className="block mt-1 bg-gradient-to-r from-bakery-terracotta via-bakery-burgundy to-bakery-sage bg-clip-text text-transparent italic font-normal">
+              Fresh Daily
             </span>
-            Every Day 🍰
           </h1>
 
-          <p className="mt-6 text-lg text-gray-600 max-w-xl">
-            Discover artisan breads, premium cakes and delicious pastries baked with love and delivered fresh to your doorstep.
+          <p className="mt-6 text-base md:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans">
+            Indulge in our exquisite collection of freshly baked sourdoughs, premium pastries, decadent custom cakes, and classic cookies. Baked daily by master pastry chefs.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
-            <button className="px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold shadow-lg hover:scale-105 transition duration-300">
-              Order Now
-            </button>
-
-            <button className="px-8 py-4 rounded-2xl border-2 border-amber-500 text-amber-600 font-semibold hover:bg-amber-50 transition">
-              View Menu
-            </button>
+          {/* Action buttons */}
+          <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
+            <Link
+              to="/products"
+              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-bakery-burgundy to-bakery-terracotta text-white font-bold shadow-xl shadow-bakery-burgundy/10 hover:shadow-bakery-burgundy/20 hover:scale-[1.03] transition duration-300 text-sm uppercase tracking-wider"
+            >
+              Order Online Now
+            </Link>
+            <Link
+              to="/about"
+              className="px-8 py-4 rounded-2xl border-2 border-bakery-burgundy text-bakery-burgundy hover:bg-bakery-burgundy hover:text-white font-bold transition duration-300 text-sm uppercase tracking-wider"
+            >
+              Our Heritage Story
+            </Link>
           </div>
 
-          <div className="flex gap-8 mt-10">
+          {/* Stats Bar */}
+          <div className="flex gap-10 mt-14 justify-center lg:justify-start border-t border-bakery-cream/40 pt-8">
             <div>
-              <h3 className="text-3xl font-bold text-amber-600">
-                500+
-              </h3>
-              <p className="text-gray-500">
-                Happy Customers
-              </p>
+              <h3 className="text-3xl font-extrabold text-bakery-burgundy">1,200+</h3>
+              <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider mt-1">Happy Foodies</p>
             </div>
-
             <div>
-              <h3 className="text-3xl font-bold text-amber-600">
-                50+
-              </h3>
-              <p className="text-gray-500">
-                Bakery Items
-              </p>
+              <h3 className="text-3xl font-extrabold text-bakery-burgundy">48+</h3>
+              <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider mt-1">Signature Items</p>
             </div>
-
             <div>
-              <h3 className="text-3xl font-bold text-amber-600">
-                4.9★
-              </h3>
-              <p className="text-gray-500">
-                Customer Rating
-              </p>
+              <h3 className="text-3xl font-extrabold text-bakery-burgundy">4.9 ★</h3>
+              <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider mt-1">Rating</p>
             </div>
           </div>
         </div>
 
-        {/* Image */}
-        <div className="flex-1">
+        {/* Hero Image */}
+        <div className="flex-1 w-full max-w-lg lg:max-w-none relative">
+          <div className="absolute inset-0 bg-bakery-cream rounded-3xl rotate-3 scale-95 opacity-50"></div>
           <img
-            src="https://images.unsplash.com/photo-1509440159596-0249088772ff"
-            alt="Fresh Bakery"
-            className="rounded-3xl shadow-2xl hover:scale-105 transition duration-500"
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000"
+            alt="Artisan Sourdough Loaf"
+            className="relative z-10 w-full h-[320px] md:h-[450px] object-cover rounded-3xl shadow-2xl hover:scale-[1.02] transition duration-500 border border-white/20"
           />
         </div>
-
       </div>
     </section>
   );
