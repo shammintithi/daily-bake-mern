@@ -3,6 +3,9 @@ import express from "express";
 import {
   registerUser,
   loginUser,
+  updateProfile,
+  updatePassword,
+  updateAddress,
 } from "../controllers/authController.js";
 
 import {
@@ -12,22 +15,58 @@ import {
 
 const router = express.Router();
 
-// Register
-router.post("/register", registerUser);
+// REGISTER
+router.post(
+  "/register",
+  registerUser
+);
 
-// Login
-router.post("/login", loginUser);
+// LOGIN
+router.post(
+  "/login",
+  loginUser
+);
 
-// User Profile (Protected)
-router.get("/profile", protect, (req, res) => {
-  res.json(req.user);
-});
+// GET PROFILE
+router.get(
+  "/profile",
+  protect,
+  (req, res) => {
+    res.json(req.user);
+  }
+);
 
-// Admin Route (Protected + Admin)
-router.get("/admin", protect, admin, (req, res) => {
-  res.json({
-    message: "Welcome Admin 👑",
-  });
-});
+// UPDATE PROFILE
+router.put(
+  "/profile",
+  protect,
+  updateProfile
+);
+
+// UPDATE PASSWORD
+router.put(
+  "/password",
+  protect,
+  updatePassword
+);
+
+// UPDATE ADDRESS
+router.put(
+  "/address",
+  protect,
+  updateAddress
+);
+
+// ADMIN ROUTE
+router.get(
+  "/admin",
+  protect,
+  admin,
+  (req, res) => {
+    res.json({
+      message: "Welcome Admin 👑",
+    });
+  }
+);
 
 export default router;
